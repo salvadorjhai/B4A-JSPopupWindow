@@ -11,7 +11,6 @@ You can find the additional library in [B4A Forum](https://b4x.com/android/forum
 ![](screenshot/0.png)  ![PopupWindow](screenshot/1.png)
 
 ### Sample
-##### Using List Adapter 
 ```
 Sub Globals
 Dim popup As JSPopupWindow
