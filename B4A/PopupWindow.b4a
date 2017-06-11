@@ -1,0 +1,125 @@
+﻿Version=7
+NumberOfModules=1
+Module1=Starter
+Build1=Default,com.salvadorjhai.popup
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="20"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~
+IconFile=
+NumberOfFiles=7
+File1=adipiscisitesse.png
+File2=dolorfugiatvoluptas.png
+File3=estexcepturidolorum.png
+File4=layout1.bal
+File5=mock_data.json
+File6=praesentiumnemonihil.jpg.png
+File7=veniamquibusdamet.jpg.png
+NumberOfLibraries=3
+Library1=core
+Library2=jspopupwindow
+Library3=json
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: B4A Example
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Dim mockData As List
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	'These variables can only be accessed from this module.
+	Dim popup As JSPopupWindow
+	Private btnFollow As Button
+	Private imgAvatar As ImageView
+	Private lblAccount As Label
+	Private lblName As Label
+	Dim LV As ListView
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	'Do not forget to load the layout file created with the visual designer. For example:
+	'Activity.Initialize("Activity")
+	Dim json As JSONParser
+	json.Initialize(File.ReadString(File.DirAssets, "mock_data.json"))	
+	mockData = json.NextArray
+	
+	LV.Initialize("LV")
+	Activity.AddView(LV, 0dip, 0dip, 100%x, 100%y)
+	
+	For i = 0 To mockData.Size - 1
+		Dim mapper As Map = mockData.Get(i)		
+		LV.AddTwoLinesAndBitmap2(mapper.Get("fullname"), mapper.Get("slogan"), Null, i)
+	Next
+			
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean 'Return True to consume the event
+	If KeyCode = KeyCodes.KEYCODE_BACK Then
+		If popup.IsInitialized Then 
+			If popup.IsShowing Then popup.Dismiss
+		End If
+		Return True 
+	End If
+	Return False	
+End Sub
+
+Sub LV_ItemClick (Position As Int, Value As Object)
+	If popup.IsInitialized Then
+		popup.Dismiss
+	End If
+	
+	Dim mapper As Map = mockData.Get(Position)
+	
+	Dim viewContent As Panel
+	viewContent.Initialize("")
+	viewContent.LoadLayout("layout1")
+	
+	Dim cd As ColorDrawable
+	cd.Initialize(Colors.White, 10dip)
+	viewContent.Background = cd
+
+	'initialize popup
+	popup.Initialize("popup", viewContent, 100%x - 40dip, btnFollow.Top + btnFollow.Height + 10dip)
+
+	'set content data/layout
+	imgAvatar.Bitmap = LoadBitmap(File.DirAssets, "adipiscisitesse.png")
+	imgAvatar.Left = popup.Width / 2 - imgAvatar.Width / 2
+	
+	lblName.Text = mapper.Get("fullname")
+	lblName.Left = popup.Width / 2 - lblName.Width / 2
+	lblAccount.Text = mapper.Get("email")
+	
+	lblAccount.Left = popup.Width / 2 - lblAccount.Width / 2
+	btnFollow.Left = popup.Width / 2 - btnFollow.Width / 2
+
+	' show poup
+	popup.showAtLocation(LV, Gravity.CENTER, 0dip, 0dip)
+End Sub
+
+Sub popup_onDismiss()
+	ToastMessageShow("Popup dismiss", False)
+End Sub
+
+Sub btnFollow_Click
+	popup.dismiss
+End Sub

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <doclet-version-NOT-library-version>1.05</doclet-version-NOT-library-version>
+    <class>
+        <name>com.salvadorjhai.widgets.JSPopupWindow</name>
+        <shortname>JSPopupWindow</shortname>
+        <comment>PopupWindow wrapper</comment>
+        <objectwrapper>android.widget.PopupWindow</objectwrapper>
+        <owner>process</owner>
+        <event>onDismiss()</event>
+        <method>
+            <name>Initialize</name>
+            <comment>Create a new popup window which can display the contentView. The dimension of the window must be passed to this constructor.
+ The popup does not provide any background. This should be handled by the content view.
+ba: the ba
+eventName: the event name
+contentView: - View: the popup's content
+width: - int: the popup's width
+height: - int: the popup's height</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>ba</name>
+                <type>anywheresoftware.b4a.BA</type>
+            </parameter>
+            <parameter>
+                <name>eventName</name>
+                <type>java.lang.String</type>
+            </parameter>
+            <parameter>
+                <name>contentView</name>
+                <type>android.view.View</type>
+            </parameter>
+            <parameter>
+                <name>width</name>
+                <type>int</type>
+            </parameter>
+            <parameter>
+                <name>height</name>
+                <type>int</type>
+            </parameter>
+        </method>
+        <method>
+            <name>showAsDropDown</name>
+            <comment>Show as drop down.
+anchor: the anchor</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>anchor</name>
+                <type>android.view.View</type>
+            </parameter>
+        </method>
+        <method>
+            <name>isOutsideTouchable</name>
+            <comment>Checks if is outside touchable.
+Return type: @return:true, if is outside touchable</comment>
+            <returntype>boolean</returntype>
+        </method>
+        <method>
+            <name>isFocusable</name>
+            <comment>Checks if is focusable.
+Return type: @return:true, if is focusable</comment>
+            <returntype>boolean</returntype>
+        </method>
+        <method>
+            <name>showAsDropDown2</name>
+            <comment>Show as drop down.
+anchor: the anchor
+xoff: the xoff
+yoff: the yoff</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>anchor</name>
+                <type>android.view.View</type>
+            </parameter>
+            <parameter>
+                <name>xoff</name>
+                <type>int</type>
+            </parameter>
+            <parameter>
+                <name>yoff</name>
+                <type>int</type>
+            </parameter>
+        </method>
+        <method>
+            <name>showAtLocation</name>
+            <comment>Show at location.
+parent: the parent
+gravity: the gravity
+x: the x
+y: the y</comment>
+            <returntype>void</returntype>
+            <parameter>
+                <name>parent</name>
+                <type>android.view.View</type>
+            </parameter>
+            <parameter>
+                <name>gravity</name>
+                <type>int</type>
+            </parameter>
+            <parameter>
+                <name>x</name>
+                <type>int</type>
+            </parameter>
+            <parameter>
+                <name>y</name>
+                <type>int</type>
+            </parameter>
+        </method>
+        <method>
+            <name>isAboveAnchor</name>
+            <comment>Checks if is above anchor.
+Return type: @return:true, if is above anchor</comment>
+            <returntype>boolean</returntype>
+        </method>
+        <method>
+            <name>isTouchable</name>
+            <comment>Checks if is touchable.
+Return type: @return:true, if is touchable</comment>
+            <returntype>boolean</returntype>
+        </method>
+        <method>
+            <name>dismiss</name>
+            <comment>Dismiss.</comment>
+            <returntype>void</returntype>
+        </method>
+        <method>
+            <name>isShowing</name>
+            <comment>Checks if is showing.
+Return type: @return:true, if is showing</comment>
+            <returntype>boolean</returntype>
+        </method>
+        <method>
+            <name>IsInitialized</name>
+            <comment></comment>
+            <returntype>boolean</returntype>
+        </method>
+        <property>
+            <name>OutsideTouchable</name>
+            <parameter>
+                <name>touchable</name>
+                <type>boolean</type>
+            </parameter>
+            <comment>Sets the outside touchable.</comment>
+        </property>
+        <property>
+            <name>Height</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>height</name>
+                <type>int</type>
+            </parameter>
+            <comment>Gets the height.</comment>
+        </property>
+        <property>
+            <name>ContentView</name>
+            <returntype>android.view.View</returntype>
+            <comment>Gets the content view.</comment>
+        </property>
+        <property>
+            <name>Width</name>
+            <returntype>int</returntype>
+            <parameter>
+                <name>width</name>
+                <type>int</type>
+            </parameter>
+            <comment>Gets the width.</comment>
+        </property>
+        <property>
+            <name>Touchable</name>
+            <parameter>
+                <name>touchable</name>
+                <type>boolean</type>
+            </parameter>
+            <comment>Sets the touchable.</comment>
+        </property>
+    </class>
+    <version>1.0</version>
+    <author>salvadorjhai</author>
+</root>
