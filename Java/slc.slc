@@ -1,0 +1,6 @@
+{
+  "projectSource": "D:\\Projects\\Android\\CustomLibs\\PopupWrapper\\Java",
+  "libraryName": "PopupWindow",
+  "libraryVersion": "1.0",
+  "b4aignore": "org,com.android,com.example,com.hoho"
+}
